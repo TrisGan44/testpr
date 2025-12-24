@@ -4,17 +4,284 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Test Page (conflict demo)</title>
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --accent: #ff6584;
+            --surface: #f5f6fa;
+            --text: #2c3e50;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        header {
+            padding: 2.5rem 10vw 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.04em;
+        }
+
+        .brand span {
+            display: inline-block;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.25);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.35rem 0.65rem;
+            border-radius: 0.65rem;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        nav a:hover {
+            background: rgba(108, 99, 255, 0.12);
+            color: #1b1f3b;
+        }
+
+        .hero {
+            padding: 1rem 10vw 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 4vw, 3.2rem);
+            margin: 0 0 1rem;
+        }
+
+        .hero p {
+            margin: 0 0 1.2rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .button {
+            border: none;
+            padding: 0.85rem 1.35rem;
+            font-size: 1rem;
+            border-radius: 0.8rem;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, var(--primary), #4cc0ff);
+            color: white;
+            box-shadow: 0 12px 24px rgba(108, 99, 255, 0.25);
+        }
+
+        .button.secondary {
+            background: white;
+            color: var(--text);
+            border: 1px solid #dcdfea;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 28px rgba(108, 99, 255, 0.22);
+        }
+
+        .card-grid {
+            padding: 1rem 10vw 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+            border: 1px solid #edf0f7;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            padding: 1rem 10vw 4rem;
+        }
+
+        .timeline h2 {
+            margin: 0 0 1.2rem;
+        }
+
+        .timeline-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            border: 1px solid #edf0f7;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 0.9rem;
+        }
+
+        .timeline-item time {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .footnote {
+            padding: 1rem 10vw 2.5rem;
+            color: #5c677d;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <p>This is a simple HTML file for testing pull requests.</p>
-    <p>Just some basic text here.</p>
-    <p>Nothing fancy, just keeping it simple.</p>
+    <header>
+        <div class="brand">
+            <span aria-hidden="true"></span>
+            <div>
+                <div>Conflict Ready Co.</div>
+                <small>Manual merge playground</small>
+            </div>
+        </div>
+        <nav aria-label="Page navigation">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#notes">Notes</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <h1>what does this looks like</h1>
-    <div>
-        <p>Making a tiny change on the same block to invite a merge conflict later.</p>
-        <p>Another tweak to the intro so parallel edits will bump into each other.</p>
-    </div>
+    <section class="hero" id="overview">
+        <div>
+            <h1>Hands-on merge practice, now with overlapping edits</h1>
+            <p>
+                This HTML file used to be a humble three-paragraph page. It now layers
+                navigation, grids, and cards on the exact lines that base branches love to
+                touch, making conflicts more likely. Go ahead and tweak the same sentences
+                in another branch to see how the merge tools react.
+            </p>
+            <p>
+                Try rewriting this description or shuffling these sections in another branch.
+                With more shared context and extra markup near the top of the file, concurrent
+                edits should run into each other and require a manual merge.
+            </p>
+            <div class="hero-actions">
+                <button class="button primary">Start a conflicting edit</button>
+                <button class="button secondary">Open merge guide</button>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Conflict recipe</h3>
+            <p>Change the heading copy, reorder sections, or rename these buttons in another branch.</p>
+            <p>Because these lines sit close together, Git is more likely to surface a conflict.</p>
+        </div>
+    </section>
+
+    <section class="card-grid" id="features">
+        <div class="card">
+            <h3>Shared hot spot</h3>
+            <p>Most branches adjust the hero text, making this block ideal for testing conflicts.</p>
+        </div>
+        <div class="card">
+            <h3>Dense markup</h3>
+            <p>Dense structures put more sensitive lines in play when two branches edit nearby copy.</p>
+        </div>
+        <div class="card">
+            <h3>Manual merge prompt</h3>
+            <p>Labels like this nudge reviewers to handle the merge themselves instead of relying on automation.</p>
+        </div>
+        <div class="card">
+            <h3>Big diff surface</h3>
+            <p>The expanded layout ensures this PR overlaps with almost any competing change.</p>
+        </div>
+    </section>
+
+    <section class="timeline" id="timeline">
+        <h2>Suggested conflicting edits</h2>
+        <div class="timeline-item">
+            <time>Step 1</time>
+            <div>Rewrite the hero title and subtitle from another branch.</div>
+        </div>
+        <div class="timeline-item">
+            <time>Step 2</time>
+            <div>Shuffle the order of these timeline items or add new ones.</div>
+        </div>
+        <div class="timeline-item">
+            <time>Step 3</time>
+            <div>Adjust the button labels to match a different terminology.</div>
+        </div>
+        <div class="timeline-item">
+            <time>Step 4</time>
+            <div>Comment out an entire section and see how the diff collides.</div>
+        </div>
+    </section>
+
+    <section class="footnote" id="notes">
+        <h2>Manual merge expected</h2>
+        <p>
+            Any sibling branch that still contains the original minimal paragraphs will now diverge sharply from
+            this richer layout. When you open a pull request, the overlap around the hero and intro text should be
+            sufficient to trip Git's conflict detector and force a manual resolution.
+        </p>
+        <p>
+            The goal here is not functionality—it is to practice resolving conflicts where both branches rewrite
+            the same sections. Feel free to adjust the text, reorder components, or change styles elsewhere to
+            increase the chance of a non-trivial merge.
+        </p>
+    </section>
 </body>
 </html>
